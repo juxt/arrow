@@ -503,7 +503,8 @@ public class DenseUnionVector implements FieldVector {
     List<org.apache.arrow.vector.types.pojo.Field> childFields = new ArrayList<>(childCount);
     int[] typeIds = new int[childCount];
     for (int i = 0; i < typeFields.length; i++) {
-      if (typeFields[i] != null) {
+      if (childVectors[i] != null) {
+        typeFields[i] = childVectors[i].getField();
         int curIdx = childFields.size();
         typeIds[curIdx] = i;
         childFields.add(typeFields[i]);
